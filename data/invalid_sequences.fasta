@@ -1,0 +1,4 @@
+>valid_sequence
+ACGTACGTNN
+>corrupted_sequence
+ACGTXGCT
