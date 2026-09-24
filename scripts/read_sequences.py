@@ -17,6 +17,17 @@ with open(input_file) as file:
 
     for line in file:
         cleaned_line = line.strip()
-        sample_id, sequence = cleaned_line.split("\t")
+        fields = cleaned_line.split("\t")
+        if len(fields)  !=2:
+            print(f"Skipping: unexpected number of fields",file=sys.stderr)
+            continue 
+
+        sample_id, sequence = fields
+        allowed_bases = set("ACGTN")
+        invalid_bases = set(sequence) - allowed_bases
+        if invalid_bases:
+            print(f"SKipping: invalid bases in \033[4m{sample_id}\033[0m: {', '.join(invalid_bases)}",file=sys.stderr)
+            continue 
+
         gc_percent = calculate_gc(sequence)
         print(f"{sample_id}\t{sequence}\t{gc_percent:.2f}")
