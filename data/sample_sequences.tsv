@@ -3,3 +3,5 @@ tumor_1	ATGCGTAA
 tumor_2	GGGGCCCC
 normal_1	ATATATAT
 normal_2	ACGT 
+broken_sample	
+contaminated_sample	ACGTXGTA
